@@ -45,12 +45,12 @@ public class WeatherApplication extends Application {
                 .applicationModule(new ApplicationModule(this))
                 .build();
 
-        //初始化Stetho
+        //초기화Stetho
         BuildConfig.STETHO.init(this.getApplicationContext());
 
         weatherApplicationInstance = this;
 
-        //初始化ApiClient
+        //초기화ApiClient
         ApiConfiguration apiConfiguration = ApiConfiguration.builder()
 //                .dataSourceType(ApiConstants.WEATHER_DATA_SOURCE_TYPE_MI)
 //                .dataSourceType(ApiConstants.WEATHER_DATA_SOURCE_TYPE_KNOW)

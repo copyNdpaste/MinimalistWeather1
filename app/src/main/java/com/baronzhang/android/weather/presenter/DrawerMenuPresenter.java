@@ -101,7 +101,7 @@ public final class DrawerMenuPresenter implements DrawerContract.Presenter {
         String currentCityId = PreferenceHelper.getSharedPreferences().getString(WeatherSettings.SETTINGS_CURRENT_CITY_ID.getId(), "");
         try {
             weatherDao.deleteById(cityId);
-            if (cityId.equals(currentCityId)) {//说明删除的是当前选择的城市，所以需要重新设置默认城市
+            if (cityId.equals(currentCityId)) {////설명은 현재 선택한 도시를 삭제하는 것이므로 기본 도시를 재설정해야합니다.
                 List<Weather> weatherList = weatherDao.queryAllSaveCity();
                 if (weatherList != null && weatherList.size() > 0) {
                     currentCityId = weatherList.get(0).getCityId();

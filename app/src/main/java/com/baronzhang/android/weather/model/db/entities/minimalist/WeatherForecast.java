@@ -53,28 +53,28 @@ public class WeatherForecast {
     @DatabaseField(columnName = DATE_FIELD_NAME)
     private String date;
     @DatabaseField(columnName = WEEK_FIELD_NAME)
-    private String week; //周一，周二，...
+    private String week; //월요일，화요일，...
 
     @DatabaseField(columnName = POP_FIELD_NAME)
-    private String pop;//降水概率(%)
+    private String pop;//강수 확률(%)
     @DatabaseField(columnName = UV_FIELD_NAME)
-    private String uv;//紫外线级别
+    private String uv;//자외선 레벨
     @DatabaseField(columnName = VISIBILITY_FIELD_NAME)
-    private String visibility;//能见度(km)
+    private String visibility;//공개 범위(km)
     @DatabaseField(columnName = HUMIDITY_FIELD_NAME)
-    private String humidity;//相对湿度(%)
+    private String humidity;//상대 습도(%)
     @DatabaseField(columnName = PRESSURE_FIELD_NAME)
-    private String pressure;//气压(hPa)
+    private String pressure;//기압(hPa)
     @DatabaseField(columnName = PRECIPITATION_FIELD_NAME)
-    private String precipitation;//降水量(mm)
+    private String precipitation;//강수량(mm)
     @DatabaseField(columnName = SUNRISE_FIELD_NAME)
     private String sunrise;//日出
     @DatabaseField(columnName = SUNSET_FIELD_NAME)
-    private String sunset;//日落
+    private String sunset;//일출
     @DatabaseField(columnName = MOONRISE_FIELD_NAME)
-    private String moonrise;//月升
+    private String moonrise;//월출
     @DatabaseField(columnName = MOONSET_FIELD_NAME)
-    private String moonset;//月落
+    private String moonset;//월몰
 
     public WeatherForecast() {
     }

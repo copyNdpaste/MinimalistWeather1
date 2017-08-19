@@ -26,7 +26,7 @@ import butterknife.ButterKnife;
 public class CityListAdapter extends BaseRecyclerViewAdapter<CityListAdapter.ViewHolder> implements Filterable {
 
     private List<City> cities;
-    public List<City> mFilterData;//过滤后的数据
+    public List<City> mFilterData;//필터링된 데이터
 
     private RecyclerViewFilter filter;
 
@@ -83,16 +83,16 @@ public class CityListAdapter extends BaseRecyclerViewAdapter<CityListAdapter.Vie
         @Override
         protected FilterResults performFiltering(CharSequence charSequence) {
 
-            //返回的results即为过滤后的ArrayList<City>
+            //반환된 결과가 필터링됨 ArrayList<City>
             FilterResults results = new FilterResults();
 
-            //无约束字符串则返回null
+            // 제약되지 않은 문자열이 반환됩니다. null
             if (charSequence == null || charSequence.length() == 0) {
                 results.values = null;
                 results.count = 0;
             } else {
                 String prefixString = charSequence.toString().toLowerCase();
-                //新建Values存放过滤后的数据
+                //새 값은 필터링된 데이터를 저장함
                 ArrayList<City> newValues = new ArrayList<>();
                 Stream.of(cities)
                         .filter(city -> (city.getCityName().contains(prefixString)
@@ -109,10 +109,10 @@ public class CityListAdapter extends BaseRecyclerViewAdapter<CityListAdapter.Vie
         protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
             mFilterData = (List<City>) filterResults.values;
             if (filterResults.count > 0) {
-                notifyDataSetChanged();//重绘当前可见区域
+                notifyDataSetChanged();//현재 보이는 영역 다시 그리기
             } else {
                 mFilterData = cities;
-                notifyDataSetChanged();//会重绘控件（还原到初始状态）
+                notifyDataSetChanged();//컨트롤 다시 그리기 (초기 상태 복원)
             }
         }
     }

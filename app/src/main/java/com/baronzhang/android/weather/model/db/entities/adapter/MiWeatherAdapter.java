@@ -54,7 +54,7 @@ public class MiWeatherAdapter extends WeatherAdapter {
         List<WeatherForecast> weatherForecasts = new ArrayList<>();
         MiForecast miForecast = miWeather.getForecast();
 
-        //TODO Forecast中的日期和星期还需要修改
+        //TODO Forecast 날짜와 주간 수정해야함
         String[] weathers1 = splitWeather(miForecast.getWeather1());
         int[] temps1 = splitTemperature(miForecast.getTemp1());
         weatherForecasts.add(new WeatherForecast(miForecast.getCityId(), miForecast.getWeather1(), weathers1[0],
@@ -113,7 +113,7 @@ public class MiWeatherAdapter extends WeatherAdapter {
     }
 
     /**
-     * 拆分天气
+     * 날씨 분할
      *
      * @param weather 如：晴转多云
      * @return {"晴", "多云"}
@@ -123,8 +123,8 @@ public class MiWeatherAdapter extends WeatherAdapter {
         if (weather == null) {
             return new String[]{"", ""};
         }
-        if (weather.contains("转")) {
-            return weather.split("转");
+        if (weather.contains("회전")) {
+            return weather.split("회전");
         } else {
             return new String[]{weather, weather};
         }

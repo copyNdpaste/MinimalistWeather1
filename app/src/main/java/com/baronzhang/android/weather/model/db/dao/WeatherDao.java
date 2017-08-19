@@ -81,9 +81,9 @@ public class WeatherDao {
     }
 
     /**
-     * 查询数据库中的所有已添加的城市
+     * DB에 추가된 모든 도시 쿼리
      *
-     * @return 结果集中只包括城市信息，天气数据不在其中
+     * @return 도시 정보만 포함, 날씨 데이터는 없음
      * @throws SQLException
      */
     public List<Weather> queryAllSaveCity() throws SQLException {
@@ -120,22 +120,22 @@ public class WeatherDao {
         weatherDaoOperation.update(weather);
         apiDaoOperation.update(weather.getAirQualityLive());
 
-        //先删除旧数据
+        //이전 데이터 삭제
         DeleteBuilder<WeatherForecast, Long> forecastDeleteBuilder = forecastDaoOperation.deleteBuilder();
         forecastDeleteBuilder.where().eq(WeatherForecast.CITY_ID_FIELD_NAME, weather.getCityId());
         PreparedDelete<WeatherForecast> forecastPrepared = forecastDeleteBuilder.prepare();
         forecastDaoOperation.delete(forecastPrepared);
-        //再插入新数据
+        //새 데이터 삽입
         for (WeatherForecast weatherForecast : weather.getWeatherForecasts()) {
             forecastDaoOperation.create(weatherForecast);
         }
 
-        //先删除旧数据
+        //이전 데이터 삭제
         DeleteBuilder<LifeIndex, Long> lifeIndexDeleteBuilder = lifeIndexesDaoOperation.deleteBuilder();
         lifeIndexDeleteBuilder.where().eq(LifeIndex.CITY_ID_FIELD_NAME, weather.getCityId());
         PreparedDelete<LifeIndex> lifeIndexPrepared = lifeIndexDeleteBuilder.prepare();
         lifeIndexesDaoOperation.delete(lifeIndexPrepared);
-        //再插入新数据
+        //새 데이터 삽입
         for (LifeIndex index : weather.getLifeIndexes()) {
             lifeIndexesDaoOperation.create(index);
         }

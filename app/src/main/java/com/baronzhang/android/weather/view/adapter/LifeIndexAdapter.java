@@ -74,21 +74,21 @@ public class LifeIndexAdapter extends BaseRecyclerViewAdapter<LifeIndexAdapter.V
 
 
         int colorResourceId = ic_index_sunscreen;
-        if (indexName.contains("防晒")) {
+        if (indexName.contains("선크림 바르기")) {
             colorResourceId = ic_index_sunscreen;
-        } else if (indexName.contains("穿衣")) {
+        } else if (indexName.contains("옷 입기")) {
             colorResourceId = R.drawable.ic_index_dress;
-        } else if (indexName.contains("运动")) {
+        } else if (indexName.contains("운동")) {
             colorResourceId = R.drawable.ic_index_sport;
-        } else if (indexName.contains("逛街")) {
+        } else if (indexName.contains("쇼핑")) {
             colorResourceId = R.drawable.ic_index_shopping;
-        } else if (indexName.contains("晾晒")) {
+        } else if (indexName.contains("건조")) {
             colorResourceId = R.drawable.ic_index_sun_cure;
-        } else if (indexName.contains("洗车")) {
+        } else if (indexName.contains("세차")) {
             colorResourceId = R.drawable.ic_index_car_wash;
-        } else if (indexName.contains("感冒")) {
-            colorResourceId = R.drawable.ic_index_clod;
-        } else if (indexName.contains("广场舞")) {
+        } else if (indexName.contains("추위")) {
+            colorResourceId = R.drawable.ic_index_cold;
+        } else if (indexName.contains("광장춤")) {
             colorResourceId = R.drawable.ic_index_dance;
         }
         return context.getResources().getDrawable(colorResourceId);

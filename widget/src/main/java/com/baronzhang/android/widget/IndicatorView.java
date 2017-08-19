@@ -32,15 +32,15 @@ public class IndicatorView extends LinearLayout {
     private int markerId;
     private Bitmap marker = null;
 
-    private int indicatorValue = 0;// 默认AQI值
-    private int textSize = 6;// 默认文字大小
-    private int intervalValue = 1;// TextView之间的间隔大小，单位dp
-    private int textColorId = R.color.indicator_text_color;// 默认文字颜色
+    private int indicatorValue = 0;// 기본 AQI 값
+    private int textSize = 6;// 기본 텍스트 크기
+    private int intervalValue = 1;// TextView, unit dp 사이의 간격 크기
+    private int textColorId = R.color.indicator_text_color;// 기본 텍스트 색상
     private int textColor;
     private int indicatorStringsResourceId = R.array.indicator_strings;
     private int indicatorColorsResourceId = R.array.indicator_colors;
 
-    private int indicatorViewWidth;// IndicatorView宽度
+    private int indicatorViewWidth;// IndicatorView 너비
 
     private int paddingTopInXML;
 
@@ -53,19 +53,19 @@ public class IndicatorView extends LinearLayout {
     }
 
     /**
-     * 控件初始化，构造函数调用
+     * 제어 초기화, 생성자 호출
      */
     private void init(Context context, AttributeSet attrs) {
         this.context = context;
         this.setOrientation(LinearLayout.HORIZONTAL);
-        //开启绘图缓存，提高绘图效率
+        //드로잉 캐시를 열어 드로잉 효율을 향상시킴
         this.setDrawingCacheEnabled(true);
 
         initPaint();
         initAttrs(attrs);
         fillViewToParent(context);
 
-        this.setWillNotDraw(false);// 确保onDraw()被调用
+        this.setWillNotDraw(false);// onDraw()가 호출되었는지 확인
 
         this.paddingTopInXML = this.getPaddingTop();
         this.setPadding(this.getPaddingLeft() + this.marker.getWidth() / 2,
@@ -75,18 +75,18 @@ public class IndicatorView extends LinearLayout {
     }
 
     /**
-     * 初始化paint
+     * paint 초기화
      */
     private void initPaint() {
         this.paint = new Paint();
-        // 设置是否使用抗锯齿功能，会消耗较大资源，绘制图形速度会变慢。
+        // 앤티 앨리어싱 기능을 사용할지 설정, 많은 리소스 소모, 그래픽 느려짐。
         this.paint.setAntiAlias(true);
-        // 设定是否使用图像抖动处理，会使绘制出来的图片颜色更加平滑和饱满，图像更加清晰
+        // 이미지 지터 처리를 사용할지 설정하면 그림을 부드럽고 꽉 차게 만들고 더 선명해짐
         this.paint.setDither(true);
     }
 
     /**
-     * 获取自定义attrs
+     * 맞춤attrs 가져오기
      */
     private void initAttrs(AttributeSet attrs) {
         DisplayMetrics dm = getResources().getDisplayMetrics();
@@ -106,13 +106,13 @@ public class IndicatorView extends LinearLayout {
     }
 
     /**
-     * 向父容器中填充View
+     * 부모 컨테이너에 뷰 채우기
      */
     private void fillViewToParent(Context context) {
         indicatorStrings = context.getResources().getStringArray(indicatorStringsResourceId);
         indicatorColorIds = context.getResources().getIntArray(indicatorColorsResourceId);
         if (indicatorStrings.length != indicatorColorIds.length) {
-            throw new IllegalArgumentException("qualities和aqiColors的数组长度不一致！");
+            throw new IllegalArgumentException("qualities,aqiColors이 배열의 길이와 다름！");
         }
         for (int i = 0; i < indicatorStrings.length; i++) {
             addTextView(context, indicatorStrings[i], indicatorColorIds[i]);
@@ -123,10 +123,10 @@ public class IndicatorView extends LinearLayout {
     }
 
     /**
-     * 向父容器中添加TextView
+     * 상위 컨테이너에 TextView 추가
      *
-     * @param text  TextView显示文字
-     * @param color TextView的背景颜色，如："#FADBCC"
+     * @param text  TextView는 텍스트를 표시
+     * @param color TextView 배경색 : "#FADBCC"
      */
     private void addTextView(Context context, String text, int color) {
         TextView textView = new TextView(context);
@@ -141,7 +141,7 @@ public class IndicatorView extends LinearLayout {
     }
 
     /**
-     * 向父容器中添加空白View
+     * 상위 컨테이너에 빈보기 추가
      */
     private void addBlankView(Context context) {
         View transparentView = new View(context);
@@ -163,7 +163,7 @@ public class IndicatorView extends LinearLayout {
         int desiredWidth = indicatorViewWidth + getPaddingLeft() + getPaddingRight();
         int desiredHeight = this.getChildAt(0).getMeasuredHeight() + getPaddingTop() + getPaddingBottom();
 
-        //测量宽度
+        //측정 폭
         switch (widthMode) {
             case MeasureSpec.EXACTLY:
                 break;
@@ -175,7 +175,7 @@ public class IndicatorView extends LinearLayout {
                 break;
         }
 
-        //测量高度
+        //높이 측정
         switch (heightMode) {
             case MeasureSpec.EXACTLY:
                 break;
@@ -196,7 +196,7 @@ public class IndicatorView extends LinearLayout {
     }
 
     /**
-     * 用于绘制指示器图标
+     * 아이콘 그리는데 사용
      */
     private void drawMarkView(Canvas canvas) {
 
@@ -228,7 +228,7 @@ public class IndicatorView extends LinearLayout {
     public void setIndicatorValue(int indicatorValue) {
 
         if (indicatorValue < 0)
-            throw new IllegalStateException("参数indicatorValue必须大于0");
+            throw new IllegalStateException("매개변수indicatorValue는 0보다 커야합니다.");
 
         this.indicatorValue = indicatorValue;
         if (indicatorValueChangeListener != null) {

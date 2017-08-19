@@ -55,7 +55,7 @@ public class MainActivity extends BaseActivity
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
 
-    //基本天气信息
+    //기본 기상 정보
     @BindView(R.id.temp_text_view)
     TextView tempTextView;
     @BindView(R.id.weather_text_view)

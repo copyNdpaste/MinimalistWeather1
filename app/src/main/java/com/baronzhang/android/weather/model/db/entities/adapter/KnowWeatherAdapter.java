@@ -105,7 +105,7 @@ public class KnowWeatherAdapter extends WeatherAdapter {
     }
 
     /**
-     * 拆分气温
+     * 온도 분할
      *
      * @param temperatureRange 如：-6~2°
      * @return {-6, 2}

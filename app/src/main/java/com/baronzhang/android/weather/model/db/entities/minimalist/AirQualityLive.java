@@ -1,6 +1,5 @@
 package com.baronzhang.android.weather.model.db.entities.minimalist;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -39,21 +38,21 @@ public class AirQualityLive {
     @DatabaseField(columnName = PUBLISH_TIME_FIELD_NAME)
     private String publishTime;
     @DatabaseField(columnName = ADVICE_FIELD_NAME)
-    private String advice;//建议
+    private String advice;//제안
     @DatabaseField(columnName = CITY_RANK_FIELD_NAME)
-    private String cityRank;//城市排名
+    private String cityRank;//도시 순위
     @DatabaseField(columnName = QUALITY_FIELD_NAME)
-    private String quality;//空气质量
+    private String quality;//대기 질
     @DatabaseField(columnName = CO_FIELD_NAME)
-    private String co;//一氧化碳浓度(mg/m3)
+    private String co;//일산화탄소 농도(mg/m3)
     @DatabaseField(columnName = SO2_FIELD_NAME)
-    private String so2;//二氧化硫浓度(μg/m3)
+    private String so2;//이산화황 농도(μg/m3)
     @DatabaseField(columnName = NO2_FIELD_NAME)
-    private String no2;//二氧化氮浓度(μg/m3)
+    private String no2;//이산화질소 농도(μg/m3)
     @DatabaseField(columnName = O3_FIELD_NAME)
-    private String o3;//臭氧浓度(μg/m3)
+    private String o3;//오존 농도(μg/m3)
     @DatabaseField(columnName = PRIMARY_FIELD_NAME)
-    private String primary;//首要污染物
+    private String primary;//1차 오염 물질
 
 
     public AirQualityLive() {

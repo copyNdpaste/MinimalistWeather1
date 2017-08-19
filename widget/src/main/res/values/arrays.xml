@@ -2,12 +2,12 @@
 <resources>
 
     <string-array name="indicator_strings">
-        <item name="indicator_string_1">优</item>
-        <item name="indicator_string_2">良</item>
-        <item name="indicator_string_3">轻度污染</item>
-        <item name="indicator_string_4">中度污染</item>
-        <item name="indicator_string_5">重度污染</item>
-        <item name="indicator_string_5">严重污染</item>
+        <item name="indicator_string_1">코가 뻥!</item>
+        <item name="indicator_string_2">공기 좋다!</item>
+        <item name="indicator_string_3">조금 좋음</item>
+        <item name="indicator_string_4">약간 나쁨</item>
+        <item name="indicator_string_5">나쁨</item>
+        <item name="indicator_string_5">정말 나쁨</item>
     </string-array>
 
     <integer-array name="indicator_colors">

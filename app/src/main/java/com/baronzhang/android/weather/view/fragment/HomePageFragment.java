@@ -3,7 +3,6 @@ package com.baronzhang.android.weather.view.fragment;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,29 +15,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.baronzhang.android.library.fragment.BaseFragment;
-import com.baronzhang.android.library.util.DateConvertUtils;
 import com.baronzhang.android.weather.R;
 import com.baronzhang.android.weather.contract.HomePageContract;
 import com.baronzhang.android.weather.model.db.entities.minimalist.AirQualityLive;
-import com.baronzhang.android.weather.model.db.entities.minimalist.WeatherForecast;
 import com.baronzhang.android.weather.model.db.entities.minimalist.LifeIndex;
 import com.baronzhang.android.weather.model.db.entities.minimalist.Weather;
+import com.baronzhang.android.weather.model.db.entities.minimalist.WeatherForecast;
 import com.baronzhang.android.weather.view.adapter.DetailAdapter;
 import com.baronzhang.android.weather.view.adapter.ForecastAdapter;
 import com.baronzhang.android.weather.view.adapter.LifeIndexAdapter;
 import com.baronzhang.android.weather.view.entity.WeatherDetail;
 import com.baronzhang.android.widget.IndicatorView;
-import com.scwang.smartrefresh.header.MaterialHeader;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import butterknife.Unbinder;
 
 public class HomePageFragment extends BaseFragment implements HomePageContract.View {
@@ -55,15 +48,15 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
     @BindView(R.id.tv_city_rank)
     TextView cityRankTextView;
 
-    //详细天气信息
+    //상세 기상 정보
     @BindView(R.id.detail_recycler_view)
     RecyclerView detailRecyclerView;
 
-    //预报
+    //예측
     @BindView(R.id.forecast_recycler_view)
     RecyclerView forecastRecyclerView;
 
-    //生活指数
+    //생활지수
     @BindView(R.id.life_index_recycler_view)
     RecyclerView lifeIndexRecyclerView;
 
@@ -109,7 +102,7 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         View rootView = inflater.inflate(R.layout.fragment_home_page, container, false);
         unbinder = ButterKnife.bind(this, rootView);
 
-        //天气详情
+        //날씨정보
         detailRecyclerView.setNestedScrollingEnabled(false);
         detailRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         weatherDetails = new ArrayList<>();
@@ -119,7 +112,7 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         forecastRecyclerView.setItemAnimator(new DefaultItemAnimator());
         detailRecyclerView.setAdapter(detailAdapter);
 
-        //天气预报
+        //일기예보
         forecastRecyclerView.setNestedScrollingEnabled(false);
         forecastRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         weatherForecasts = new ArrayList<>();
@@ -129,7 +122,7 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         forecastRecyclerView.setItemAnimator(new DefaultItemAnimator());
         forecastRecyclerView.setAdapter(forecastAdapter);
 
-        //生活指数
+        //생활지수
         lifeIndexRecyclerView.setNestedScrollingEnabled(false);
         lifeIndexRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 4));
         lifeIndices = new ArrayList<>();
@@ -170,7 +163,7 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         aqiIndicatorView.setIndicatorValue(airQualityLive.getAqi());
         adviceTextView.setText(airQualityLive.getAdvice());
         String rank = airQualityLive.getCityRank();
-        cityRankTextView.setText(TextUtils.isEmpty(rank) ? "首要污染物: " + airQualityLive.getPrimary() : rank);
+        cityRankTextView.setText(TextUtils.isEmpty(rank) ? "미세먼지: " + airQualityLive.getPrimary() : rank);
 
         weatherDetails.clear();
         weatherDetails.addAll(createDetails(weather));
@@ -190,13 +183,13 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
     private List<WeatherDetail> createDetails(Weather weather) {
 
         List<WeatherDetail> details = new ArrayList<>();
-        details.add(new WeatherDetail(R.drawable.ic_index_sunscreen, "体感温度", weather.getWeatherLive().getFeelsTemperature() + "°C"));
-        details.add(new WeatherDetail(R.drawable.ic_index_sunscreen, "湿度", weather.getWeatherLive().getHumidity() + "%"));
+        details.add(new WeatherDetail(R.drawable.ic_index_sunscreen, "체감온도", weather.getWeatherLive().getFeelsTemperature() + "°C"));
+        details.add(new WeatherDetail(R.drawable.ic_index_sunscreen, "습도", weather.getWeatherLive().getHumidity() + "%"));
 //        details.add(new WeatherDetail(R.drawable.ic_index_sunscreen, "气压", (int) Double.parseDouble(weather.getWeatherLive().getAirPressure()) + "hPa"));
-        details.add(new WeatherDetail(R.drawable.ic_index_sunscreen, "紫外线指数", weather.getWeatherForecasts().get(0).getUv()));
-        details.add(new WeatherDetail(R.drawable.ic_index_sunscreen, "降水量", weather.getWeatherLive().getRain() + "mm"));
-        details.add(new WeatherDetail(R.drawable.ic_index_sunscreen, "降水概率", weather.getWeatherForecasts().get(0).getPop() + "%"));
-        details.add(new WeatherDetail(R.drawable.ic_index_sunscreen, "能见度", weather.getWeatherForecasts().get(0).getVisibility() + "km"));
+        details.add(new WeatherDetail(R.drawable.ic_index_sunscreen, "자외선 지수", weather.getWeatherForecasts().get(0).getUv()));
+        details.add(new WeatherDetail(R.drawable.ic_index_sunscreen, "강수량", weather.getWeatherLive().getRain() + "mm"));
+        details.add(new WeatherDetail(R.drawable.ic_index_sunscreen, "강수확률", weather.getWeatherForecasts().get(0).getPop() + "%"));
+        details.add(new WeatherDetail(R.drawable.ic_index_sunscreen, "가시거리", weather.getWeatherForecasts().get(0).getVisibility() + "km"));
         return details;
     }
 

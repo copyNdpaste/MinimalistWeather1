@@ -17,10 +17,10 @@ import android.widget.TextView;
  */
 public class TitleView extends LinearLayout {
 
-    private int defaultTitleTextSize = 7;// 默认文字大小
-    private int defaultTitleBackgroundColorId = R.color.default_title_background_color;// 默认背景颜色
-    private int defaultTitleTextColorId = R.color.default_title_text_color;// 默认文字颜色
-    private int defaultTitleLineColorId = R.color.default_title_line_color;// 默认底部线条颜色
+    private int defaultTitleTextSize = 7;// 기본 텍스트 크기
+    private int defaultTitleBackgroundColorId = R.color.default_title_background_color;// 기본 배경색
+    private int defaultTitleTextColorId = R.color.default_title_text_color;// 기본 글자 색
+    private int defaultTitleLineColorId = R.color.default_title_line_color;// 기본 하단 색상
 
     private String title;
     private int titleTextSize;

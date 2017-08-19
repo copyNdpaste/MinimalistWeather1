@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.baronzhang.android.weather.AppConstants;
 import com.baronzhang.android.weather.R;
 import com.baronzhang.android.weather.WeatherApplication;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
@@ -37,7 +36,7 @@ public final class CityDatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
-        //由于城市数据库是由外部导入的，故不需要创建执行创建表的操作
+        //도시 데이터베이스는 외부적으로 가져오기 때문에 테이블을 만들 필요가 없습니다.
     }
 
     @Override
@@ -80,14 +79,14 @@ public final class CityDatabaseHelper extends OrmLiteSqliteOpenHelper {
     }
 
     /**
-     * 导入城市数据库
+     * 도시 DB 가져오기
      */
     public static void importCityDB() {
 
-        // 判断保持城市的数据库文件是否存在
+        // 도시의 DB 파일을 유지할지 결정
         File file = new File(WeatherApplication.getInstance().getDatabasePath(DATABASE_NAME).getAbsolutePath());
-        if (!file.exists()) {// 如果不存在，则导入数据库文件
-            //数据库文件
+        if (!file.exists()) {// 존재하지 않으면 DB 파일 가져옴
+            // DB 파일
             File dbFile = WeatherApplication.getInstance().getDatabasePath(DATABASE_NAME);
             try {
                 if (!dbFile.getParentFile().exists()) {
@@ -96,7 +95,7 @@ public final class CityDatabaseHelper extends OrmLiteSqliteOpenHelper {
                 if (!dbFile.exists()) {
                     dbFile.createNewFile();
                 }
-                //加载欲导入的数据库
+                //가져올 DB 로드
                 InputStream is = WeatherApplication.getInstance().getResources().openRawResource(R.raw.city);
                 FileOutputStream fos = new FileOutputStream(dbFile);
                 byte[] buffer = new byte[is.available()];

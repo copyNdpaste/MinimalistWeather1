@@ -31,7 +31,7 @@
             android:layout_marginTop="4dp"
             android:lines="1"
             android:textSize="@dimen/text_size_caption"
-            tools:text="体感温度" />
+            tools:text="체감온도" />
 
         <TextView
             android:id="@+id/detail_value_text_view"

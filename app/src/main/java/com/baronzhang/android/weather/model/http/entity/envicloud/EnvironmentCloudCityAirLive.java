@@ -3,7 +3,7 @@ package com.baronzhang.android.weather.model.http.entity.envicloud;
 import com.alibaba.fastjson.annotation.JSONField;
 
 /**
- * 城市实时空气质量
+ * 도시의 실시간 공기질
  *
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         2017/2/16
@@ -30,34 +30,34 @@ public class EnvironmentCloudCityAirLive {
     private int requestCode;//结果吗
 
     @JSONField(name = "rdesc")
-    private String requestDesc;//结果描述
+    private String requestDesc;//결과 설명
 
     @JSONField(name = "citycode")
-    private String cityId;//城市ID
+    private String cityId;//도시ID
 
-    private String time;//时间(yyyyMMddHH)
+    private String time;//시간(yyyyMMddHH)
 
     @JSONField(name = "AQI")
-    private String aqi;//空气质量指数
+    private String aqi;//대기 질 지수
 
     @JSONField(name = "PM25")
-    private String pm25;//PM2.5浓度(μg/m3)
+    private String pm25;//PM2.5 농도(μg/m3)
 
     @JSONField(name = "PM10")
-    private String pm10;//PM10浓度(μg/m3)
+    private String pm10;//PM10 농도(μg/m3)
 
     @JSONField(name = "CO")
-    private String co;//一氧化碳浓度(mg/m3)
+    private String co;//일산화탄소 농도(mg/m3)
 
     @JSONField(name = "SO2")
-    private String so2;//二氧化硫浓度(μg/m3)
+    private String so2;//이산화황 농도(μg/m3)
 
     @JSONField(name = "NO2")
-    private String no2;//二氧化氮浓度(μg/m3)
+    private String no2;//이산화질소 농도(μg/m3)
 
-    private String o3;//臭氧浓度(μg/m3)
+    private String o3;//오존 농도(μg/m3)
 
-    private String primary;//首要污染物
+    private String primary;//1차 오염 물질
 
     public int getRequestCode() {
         return requestCode;

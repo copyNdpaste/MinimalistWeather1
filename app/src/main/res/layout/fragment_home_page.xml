@@ -144,7 +144,7 @@
                     android:layout_alignLeft="@id/tv_aqi"
                     android:layout_alignStart="@id/tv_aqi"
                     android:layout_below="@id/indicator_view_aqi"
-                    tools:text="气象条件不利于空气污染物稀释、扩散和清除，请尽量避免在室外长时间活动。" />
+                    tools:text="기상 조건은 대기 오염 물질 희석, 확산 및 제거에 도움이되지 않으므로 장시간 야외 활동을 피하도록 노력하십시오.。" />
 
                 <TextView
                     android:id="@+id/tv_city_rank"
@@ -156,7 +156,7 @@
                     android:layout_below="@id/tv_advice"
                     android:layout_marginTop="4dp"
                     android:textSize="@dimen/text_size_caption"
-                    tools:text="空气质量超过全国4%的城市或地区" />
+                    tools:text="대기 질은 국가의 도시 또는 지역의 4 %를 초과합니다." />
 
             </RelativeLayout>
 

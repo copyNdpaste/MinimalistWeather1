@@ -2,7 +2,9 @@ package com.baronzhang.android.weather.model.db.dao;
 
 import android.content.Context;
 
+import com.baronzhang.android.weather.model.db.CityDatabaseHelper;
 import com.baronzhang.android.weather.model.db.entities.City;
+import com.baronzhang.android.weather.model.db.entities.HotCity;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.QueryBuilder;
 
@@ -11,12 +13,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import com.baronzhang.android.weather.model.db.CityDatabaseHelper;
-import com.baronzhang.android.weather.model.db.entities.HotCity;
-
 /**
- * City表操作类
- *
+ * City 테이블 연산 클래스스 *
  * @author baronzhang (baron[dot]zhanglei[at]gmail[dot]com)
  *         16/3/13
  */
@@ -33,9 +31,9 @@ public class CityDao {
     }
 
     /**
-     * 查询表中的所有城市
+     * 테이블에 있는 모든 도시 찾기
      *
-     * @return 城市列表数据
+     * @return 도시 목록 데이터
      */
     public List<City> queryCityList() {
 
@@ -48,7 +46,7 @@ public class CityDao {
     }
 
     /**
-     * 根据城市查询城市信息
+     * 도시 정보에 따라 쿼리
      *
      * @param cityId 城市ID
      * @return city
@@ -63,9 +61,9 @@ public class CityDao {
     }
 
     /**
-     * 查询所有热门城市
+     * 모든 인기 도시 찾기
      *
-     * @return 热门城市列表
+     * @return 인기 도시 목록
      */
     public List<HotCity> queryAllHotCity() {
         try {

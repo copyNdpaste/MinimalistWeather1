@@ -1,6 +1,5 @@
 package com.baronzhang.android.weather.model.db.entities.minimalist;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -29,26 +28,26 @@ public class WeatherLive {
     @DatabaseField(columnName = CITY_ID_FIELD_NAME, id = true)
     private String cityId;
     @DatabaseField(columnName = WEATHER_FIELD_NAME)
-    private String weather;//天气情况
+    private String weather;//기상상황
     @DatabaseField(columnName = TEMP_FIELD_NAME)
-    private String temp;//温度
+    private String temp;//온도
     @DatabaseField(columnName = HUMIDITY_FIELD_NAME)
-    private String humidity;//湿度
+    private String humidity;//습도
     @DatabaseField(columnName = WIND_FIELD_NAME)
-    private String wind;//风向
+    private String wind;//풍향
     @DatabaseField(columnName = WIND_SPEED_FIELD_NAME)
-    private String windSpeed;//风速
+    private String windSpeed;//풍숙
     @DatabaseField(columnName = TIME_FIELD_NAME)
-    private long time;//发布时间（时间戳）
+    private long time;//출시 시간（타임스탬프）
 
     @DatabaseField(columnName = WIND_POWER_FIELD_NAME)
-    private String windPower;//风力
+    private String windPower;//풍력
     @DatabaseField(columnName = RAIN_FIELD_NAME)
-    private String rain;//降雨量(mm)
+    private String rain;//강우량(mm)
     @DatabaseField(columnName = FEELS_TEMP_FIELD_NAME)
-    private String feelsTemperature;//体感温度(℃)
+    private String feelsTemperature;//체감온도(℃)
     @DatabaseField(columnName = PRESSURE_FIELD_NAME)
-    private String airPressure;//气压(hPa)
+    private String airPressure;//기압(hPa)
 
     public WeatherLive() {
     }

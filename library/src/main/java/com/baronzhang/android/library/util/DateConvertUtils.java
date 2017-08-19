@@ -64,9 +64,9 @@ public final class DateConvertUtils {
             e.printStackTrace();
         }
         if (isNow(date))
-            return "今天";
+                return "오늘";
 
-        String[] weekDaysName = {"周日", "周一", "周二", "周三", "周四", "周五", "周六"};
+        String[] weekDaysName = {"일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"};
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         int intWeek = calendar.get(Calendar.DAY_OF_WEEK) - 1;
@@ -74,7 +74,7 @@ public final class DateConvertUtils {
     }
 
     /**
-     * 日期转换
+     * 날짜변환
      *
      * @return 08.07
      */
@@ -99,12 +99,12 @@ public final class DateConvertUtils {
      * @return 是返回true，不是返回false
      */
     private static boolean isNow(Date date) {
-        //当前时间
+        //현재시간
         Date now = new Date();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATA_FORMAT_PATTEN_YYYY_MM_DD, Locale.CHINA);
-        //获取今天的日期
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATA_FORMAT_PATTEN_YYYY_MM_DD, Locale.KOREA);
+        //오늘 날짜 가져오기
         String nowDay = simpleDateFormat.format(now);
-        //对比的时间
+        //대조시간
         String day = simpleDateFormat.format(date);
         return day.equals(nowDay);
     }

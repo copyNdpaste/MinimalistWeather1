@@ -25,17 +25,17 @@ public class EnvironmentCloudForecast {
     private int requestCode;//结果吗
 
     @JSONField(name = "rdesc")
-    private String requestDesc;//结果描述
+    private String requestDesc;//결과 설명
 
-    private SuggestionEntity suggestion;//生活指数
+    private SuggestionEntity suggestion;//생활지수
 
     @JSONField(name = "citycode")
-    private String cityId;//城市ID
+    private String cityId;//도시ID
 
     @JSONField(name = "cityname")
-    private String cityName;//城市名
+    private String cityName;//도시명
 
-    private List<ForecastEntity> forecast;//天气预报
+    private List<ForecastEntity> forecast;//일기예보
 
     public int getRequestCode() {
         return requestCode;
